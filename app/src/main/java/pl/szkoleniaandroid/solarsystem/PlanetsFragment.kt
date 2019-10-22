@@ -43,7 +43,17 @@ abstract class SolarObjectsFragment : Fragment() {
             setObjects(createObjects())
             objectClickedListener = object : ObjectClickedListener {
                 override fun objectClicked(clickedObject: SolarObject) {
-                    findNavController().navigate(R.id.nav_object_details_fragment)
+                    val args = ObjectDetailsFragmentArgs.Builder(clickedObject).build()
+
+//                    me: we should not use specific class: (because we are in abstract class)
+//                    val args = OthersFragmentDirections.
+
+
+                    val direction = ObjectDetailsFragmentDirections.navDetails(clickedObject)
+
+//                    findNavController().navigate(R.id.nav_object_details_fragment, args.toBundle())
+//me: safer- no id use, we can add animations etc:
+                    findNavController().navigate(direction)
                 }
 
             }
