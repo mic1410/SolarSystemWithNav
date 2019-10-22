@@ -11,16 +11,8 @@ import android.widget.TextView
 /**
  * A simple [Fragment] subclass.
  */
-class OthersFragment : Fragment() {
+class OthersFragment : SolarObjectsFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return TextView(activity).apply {
-            setText(R.string.hello_blank_fragment)
-        }
-    }
-
+    override fun createObjects()= repository.others
 
 }

@@ -8,18 +8,19 @@ import kotlinx.android.synthetic.main.solar_system_activity.*
 
 class SolarSystemActivity : AppCompatActivity() {
 
+    val objectsRepository: SolarObjectsRepository by lazy { SolarObjectsRepository(this) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.solar_system_activity)
 
 
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
         //me: extension function
         val navController = findNavController(R.id.nav_host_fragment)
 
-//        NavigationUI.setupWithNavController(toolbar, navController)
-
+        NavigationUI.setupWithNavController(toolbar, navController)
         NavigationUI.setupWithNavController(bottomNavigation, navController)
 
     }
