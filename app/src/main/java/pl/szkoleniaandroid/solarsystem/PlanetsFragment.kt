@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.solar_objects_fragment.*
 
 /**
@@ -40,6 +41,12 @@ abstract class SolarObjectsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         objectsRecyclerView.adapter = SolarObjectsAdapter().apply {
             setObjects(createObjects())
+            objectClickedListener = object : ObjectClickedListener {
+                override fun objectClicked(clickedObject: SolarObject) {
+                    findNavController().navigate(R.id.nav_object_details_fragment)
+                }
+
+            }
         }
 
     }
