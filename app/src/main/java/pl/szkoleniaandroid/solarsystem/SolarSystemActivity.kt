@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.solar_system_activity.*
@@ -16,13 +17,21 @@ class SolarSystemActivity : AppCompatActivity(), MoonsFragment.Callback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.solar_system_activity)
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
+        NavigationUI.setupWithNavController(toolbar, findNavController(R.id.nav_host_fragment))
         setupNavController()
     }
 
     private fun setupNavController() {
         findNavController(R.id.nav_host_fragment).apply {
             addOnDestinationChangedListener { _, destination, _ ->
+
+//                if(graph.startDestination != destination.id) {
+//                    val newGraph = graph
+//                    newGraph.startDestination = destination.id
+//                    setGraph(newGraph)
+//                }
+
                 if (destination.id == R.id.nav_details) {
                     updateNavigationUiVisibility(visible = false)
                 } else {
@@ -35,6 +44,8 @@ class SolarSystemActivity : AppCompatActivity(), MoonsFragment.Callback {
 
     private fun updateNavigationUiVisibility(visible: Boolean) {
         app_bar_layout.visibility = visible.asVisibility
+
+        //me: solves drawing problem sometimes occurring
         window.decorView.post {
             bottomNavigation.visibility = visible.asVisibility
         }
