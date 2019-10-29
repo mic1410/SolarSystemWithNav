@@ -14,13 +14,7 @@ abstract class SolarObjectsFragment : Fragment() {
 
     lateinit var binding: SolarObjectsFragmentBinding
 
-    val objects = ObservableArrayList<SolarObject>()
-    val itemBinding = ItemBinding.of<SolarObject>(BR.item, R.layout.solar_object_item)
-        .bindExtra(BR.listener, object : ObjectClickedListener {
-            override fun objectClicked(clickedObject: SolarObject) {
-                Log.d("TAG", "clicked..........")
-            }
-        })
+    private val viewModel = SolarObjectViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,11 +27,21 @@ abstract class SolarObjectsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fragment = this
-        objects.addAll(createObjects())
+        binding.vm = viewModel
+        viewModel.objects.addAll(createObjects())
     }
 
     abstract fun createObjects(): Array<SolarObject>
+}
+
+class SolarObjectViewModel {
+    val objects = ObservableArrayList<SolarObject>()
+    val itemBinding = ItemBinding.of<SolarObject>(BR.item, R.layout.solar_object_item)
+        .bindExtra(BR.listener, object : ObjectClickedListener {
+            override fun objectClicked(clickedObject: SolarObject) {
+                Log.d("TAG", "clicked..........")
+            }
+        })
 }
 
 interface ObjectClickedListener {
