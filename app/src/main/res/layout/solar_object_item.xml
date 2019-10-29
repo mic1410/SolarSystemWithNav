@@ -9,6 +9,9 @@
             name="item"
             type="pl.szkoleniaandroid.solarsystem.SolarObject" />
 
+        <variable
+            name="listener"
+            type="pl.szkoleniaandroid.solarsystem.ObjectClickedListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -16,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
         app:cardCornerRadius="0dp"
+        android:onClick="@{()->listener.objectClicked(item)}"
         app:cardElevation="2dp">
 
         <LinearLayout

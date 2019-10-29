@@ -15,7 +15,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
 import kotlinx.android.synthetic.main.object_details_content.*
 import kotlinx.android.synthetic.main.object_details_fragment.*
@@ -81,7 +80,7 @@ class ObjectDetailsFragment : Fragment() {
     private fun showMoons() {
         moonsLabel.visibility = args.solarObject.hasMoons.asVisibility
         moonsRecycleView.visibility = args.solarObject.hasMoons.asVisibility
-        if (args.solarObject.hasMoons) {
+/*        if (args.solarObject.hasMoons) {
             moonsRecycleView.apply {
                 adapter = SolarObjectsAdapter().apply {
                     objectClickedListener = object : ObjectClickedListener {
@@ -99,7 +98,7 @@ class ObjectDetailsFragment : Fragment() {
                 //https://code.google.com/p/android/issues/detail?id=177613
                 isNestedScrollingEnabled = false
             }
-        }
+        }*/
     }
 
     private fun showSolarObjectDetails(clickedObject: SolarObject) {
