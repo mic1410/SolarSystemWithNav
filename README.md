@@ -6,3 +6,6 @@ Technologies used:
 * Data Binding with BindingAdapter
 * ViewModel
 * Coil
+
+![Alt text](screenshots/1.jpg?raw=true "Main screen")
+![Alt text](screenshots/2.jpg?raw=true "Moons screen")
